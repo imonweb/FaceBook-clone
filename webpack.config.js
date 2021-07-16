@@ -4,24 +4,25 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'myBundle.js',
+    filename: 'myBundle.js'
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: 
-      }
-    ]
-  }
   devServer: {
     before: function(src, server){
-      server.__watch('./src/*.html')
+      server._watch('./src/*.html')
     },
     contentBase: path.join(__dirname, 'src'),
     hot: true,
-    port: 3000,
+    port: 3000
   },
+   module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader","css-loader"]
+      },
+    ]
+  }
+ 
 
 
 }
